@@ -11,7 +11,7 @@ class User(db.Model, UserMixin):
   hashword = db.Column(db.String(255), nullable = False)
 
   comments = db.relationship('Comment', back_populates='users')
-  games = db.relationship('Game', secondary='Wishlist', back_populates='users')
+  games = db.relationship('Game', secondary='wishlists', back_populates='users')
 
   @property
   def password(self):

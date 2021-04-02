@@ -1,0 +1,71 @@
+body {
+  background-color: #737373;
+  margin: 0;
+  padding: 0;
+  -webkit-background-size: cover;
+  background-size: cover;
+}
+
+.loginContainer {
+  width: 400px;
+  height: 420px;
+  top: 50%;
+  left: 50%;
+  color:#000;
+  padding: 60px 30px;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  box-sizing: border-box;
+  box-shadow: 8px 8px 50px #000
+}
+
+h1 {
+  margin: 0;
+  padding: 0;
+  font-weight: bold;
+  font-size: 22px;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 8%;
+
+}
+
+.loginContainer input {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.loginContainer input[type=text], .loginContainer input[type=password] {
+  border: none;
+  border-bottom: 1px solid #000;
+  background: transparent;
+  outline: none;
+  height: 30px;
+  font-size: 16px;
+  opacity: 1;
+  color: #ccc;
+}
+
+.loginContainer input[type=submit] {
+  border: none;
+  outline: none;
+  height: 40px;
+  background:green;
+  color: #fff;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.loginContainer input[type=submit]:hover {
+  cursor: pointer;
+}
+
+.loginContainer li {
+  color: red;
+  font-weight: bold;
+}
+
+.loginContainer input::placeholder {
+  color: #000
+}
+

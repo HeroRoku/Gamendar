@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 import { login } from "../../services/auth";
+import './LoginForm.css'
 
 const LoginForm = ({ authenticated, setAuthenticated }) => {
   const [errors, setErrors] = useState([]);
@@ -17,6 +18,19 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
     }
   };
 
+  // const demoSubmit = async (e) => {
+  //   e.preventDefault()
+  //   const email = 'demo@gamendar.com'
+  //   const password = 'password'
+  //   console.log(email, password)
+  //   const user = await login(email, password);
+  //   if (!user.errors) {
+  //     setAuthenticated(true);
+  //   } else {
+  //     setErrors(user.errors)
+  //   }
+  // }
+
   const updateEmail = (e) => {
     setEmail(e.target.value);
   };
@@ -30,14 +44,13 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
   }
 
   return (
-    <form onSubmit={onLogin}>
-      <div>
-        {errors.map((error) => (
-          <div>{error}</div>
-        ))}
-      </div>
-      <div>
-        <label htmlFor="email">Email</label>
+    <div className='loginContainer'>
+      <form onSubmit={onLogin}>
+        <ul>
+          {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+        </ul>
+        {/* <label htmlFor="email">Email</label> */}
+        <h1>Login</h1>
         <input
           name="email"
           type="text"
@@ -45,9 +58,7 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
           value={email}
           onChange={updateEmail}
         />
-      </div>
-      <div>
-        <label htmlFor="password">Password</label>
+        {/* <label htmlFor="password">Password</label> */}
         <input
           name="password"
           type="password"
@@ -55,9 +66,18 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
           value={password}
           onChange={updatePassword}
         />
-        <button type="submit">Login</button>
-      </div>
-    </form>
+        <input
+          type="submit"
+          value="Login"
+        />
+      </form>
+      {/* <form onSumbit={demoSubmit}>
+        <input
+          type='submit'
+          value='Demo Account'
+        />
+      </form> */}
+    </div>
   );
 };
 

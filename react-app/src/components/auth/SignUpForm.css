@@ -1,0 +1,74 @@
+body {
+  background-color: #737373;
+  /* background-image: url("../../images/Hollowed-Boxes.svg"); */
+  margin: 0;
+  padding: 0;
+  -webkit-background-size: cover;
+  background-size: cover;
+}
+
+.signupContainer {
+  display: flex;
+  width: 400px;
+  height: 420px;
+  top: 50%;
+  left: 50%;
+  color:#000;
+  padding: 15px 30px;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  box-sizing: border-box;
+  box-shadow: 8px 8px 50px #000
+}
+
+h1 {
+  margin: 0;
+  padding: 0;
+  font-weight: bold;
+  font-size: 22px;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 8%;
+
+}
+
+.signupContainer input {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.signupContainer input::placeholder {
+  color: #000
+}
+
+.signupContainer input[type=text], .signupContainer input[type=password] {
+  border: none;
+  border-bottom: 1px solid #000;
+  background: transparent;
+  outline: none;
+  height: 30px;
+  font-size: 16px;
+  opacity: 1;
+  color: #ccc;
+}
+
+.signupContainer input[type=submit] {
+  border: none;
+  outline: none;
+  height: 40px;
+  background:green;
+  color: #fff;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.signupContainer input[type=submit]:hover {
+  cursor: pointer;
+}
+
+.signupContainer li {
+  color: red;
+  font-weight: bold;
+
+}
+

@@ -11,7 +11,8 @@ class Game(db.Model):
   platform_id = db.Column(db.Integer, db.ForeignKey('platforms.id'), nullable=False)
 
   platforms = db.relationship('Platform', back_populates='games')
-  users = db.relationship('User', secondary='Wishlist', back_populates='games')
+  comments = db.relationship('Comment', back_populates='games')
+  users = db.relationship('User', secondary='wishlists', back_populates='games')
 
 
   def to_dict(self):
