@@ -1,0 +1,10 @@
+nav ul {
+  display: flex;
+  flex-direction: row;
+  text-decoration: none;
+  justify-content: space-between;
+}
+
+li {
+  list-style-type: none;
+}

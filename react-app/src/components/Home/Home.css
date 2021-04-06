@@ -1,0 +1,35 @@
+.CalendarContainer {
+  display: grid;
+  grid-template-rows: 10% 90%;
+}
+
+.CalendarHeader {
+  grid-auto-rows: 75px;
+  align-items: center;
+  text-align: center;
+}
+
+.CalendarHeader, .CalendarWeek {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-column-gap: 0.5em;
+  grid-row-gap: 0.5em;
+
+}
+
+.CalendarWeek {
+  grid-auto-rows: 100px;
+  text-align: right;
+}
+
+.CalendarDay {
+  /* border-right: 1px solid #e1e1e1; */
+  border: 1px solid #e1e1e1;
+  border-radius: 3px;
+  background-color: darkgray;
+  opacity: 0.7;
+}
+
+.CalendarDay:hover {
+  opacity: 0.3;
+}
