@@ -43,8 +43,14 @@ const Home = () => {
             <div>SAT</div>
           </div>
           <div className='CalendarWeek'>
-            {days.map(day => (<div className='CalendarDay'>{day}</div>))}
-            {/* {console.log('teST') } */}
+            {days.map(day => {
+              for (game in games) {
+                console.log(game)
+              }
+              return (<div className='CalendarDay'>{day}</div>))}
+
+
+
           </div>
         </div>
       </div>
