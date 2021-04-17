@@ -1,3 +1,7 @@
+.Calendar {
+  margin: 1rem;
+}
+
 .CalendarContainer {
   display: grid;
   grid-template-rows: 10% 90%;

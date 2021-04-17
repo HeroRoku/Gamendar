@@ -1,36 +1,56 @@
 import React, { useState, useEffect } from 'react';
 import moment from 'moment'
 import './Home.css';
-import { useDispatch, useSelector } from 'react-redux'
-import { getAllGames } from '../../store/games'
+import CalendarDay from '../CalendarDay'
+
 
 
 const Home = () => {
-  const dispatch = useDispatch()
-  const games = useSelector((state) => Object.values(state.games))
-  const [isLoaded, setIsLoaded] = useState(false)
+  const today = new Date()
+  const [days, setDays] = useState([])
+  const [month, setMonth] = useState(today.getMonth())
+  const [monthHeader, setMonthHeader] = useState('')
 
+
+  const nextMonth = () => {
+    setMonth(currentMonth => currentMonth + 1)
+  }
+  const prevMonth = () => {
+    setMonth(currentMonth => currentMonth - 1)
+  }
+    
   useEffect(() => {
-    if (games) {
-      dispatch(getAllGames()).then(res => setIsLoaded(true))
+    const momentMonth = moment().month(month)
+    const bufferDays = []
+    const startOfMonth = moment().month(month).startOf('month')
+    const endOfMonth = moment().month(month).endOf('month')
+    const startOfMonthDay = startOfMonth.day()
+    const startOfMonthDate = startOfMonth.date()
+    const endOfMonthDate = endOfMonth.date()
+
+    setMonthHeader(momentMonth.format('MMMM YYYY'))
+    
+    for (let i = startOfMonthDate; i <= endOfMonthDate; i++) {
+      bufferDays.push(i)
     }
 
-  }, [dispatch])
+    const prevMonth = endOfMonth.subtract(1, 'month').endOf('month').date()
 
-  if (isLoaded) {
-    let release = new Date(games[4].release_date)
-    // console.log(release.getDate())
-    console.log(moment(release).format('D'))
-  }
+    for ( let i = 0; i < startOfMonthDay; i++ ) {
+      bufferDays.unshift(prevMonth - i)
+    }
 
 
-  const days = [28, 29, 30, 31, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 1]
+    setDays(bufferDays)
+
+  }, [month])
 
   return (
-    isLoaded && (
       <div className='CalendarContainer'>
         <div className='Header'>
-          <h1>APRIL 2021</h1>
+          <h1>{monthHeader}</h1>
+          <button onClick={prevMonth}>PREV</button>
+          <button onClick={nextMonth}>NEXT</button>
         </div>
         <div className='Calendar'>
           <div className='CalendarHeader'>
@@ -43,13 +63,15 @@ const Home = () => {
             <div>SAT</div>
           </div>
           <div className='CalendarWeek'>
-            {days.map(day => (<div className='CalendarDay'>{day}</div>))}
-            {/* {console.log('teST') } */}
+            {days.map((day, idx) => {
+    
+                return (<CalendarDay key={idx} month={month} day={day}year={monthHeader.split(' ')[1]}/>)
+              })
+              }
           </div>
         </div>
       </div>
     )
-  )
 }
 
 export default Home;

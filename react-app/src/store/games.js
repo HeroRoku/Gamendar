@@ -25,7 +25,14 @@ const gamesReducer = (state = {}, action) => {
 
       newState = { ...state }
       const games = action.games
-      games.forEach((game) => newState[game.id] = game)
+      games.forEach((game) => {
+        const releaseDate = (new Date(game.release_date)).toLocaleDateString({}, {dateStyle: 'short'})
+        console.log(game.release_date, releaseDate)
+        if (newState[releaseDate]) newState[releaseDate].push(game)
+        else {
+        newState[releaseDate] = [game]
+        }
+      })
       return newState
     }
     default:

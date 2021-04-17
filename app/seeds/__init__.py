@@ -8,6 +8,8 @@ from .platforms import seed_platforms, undo_platforms
 seed_commands = AppGroup('seed')
 
 # Creates the `flask seed all` command
+
+
 @seed_commands.command('all')
 def seed():
     seed_users()
