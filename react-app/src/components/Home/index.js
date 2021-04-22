@@ -8,8 +8,10 @@ import CalendarDay from '../CalendarDay'
 const Home = () => {
   const today = new Date()
   const [days, setDays] = useState([])
+  const [prevDays, setPrevDays] = useState([])
   const [month, setMonth] = useState(today.getMonth())
   const [monthHeader, setMonthHeader] = useState('')
+
 
 
   const nextMonth = () => {
@@ -18,60 +20,66 @@ const Home = () => {
   const prevMonth = () => {
     setMonth(currentMonth => currentMonth - 1)
   }
-    
+
   useEffect(() => {
     const momentMonth = moment().month(month)
-    const bufferDays = []
+    const calDays = []
+    const prevCalDays = []
     const startOfMonth = moment().month(month).startOf('month')
     const endOfMonth = moment().month(month).endOf('month')
     const startOfMonthDay = startOfMonth.day()
     const startOfMonthDate = startOfMonth.date()
     const endOfMonthDate = endOfMonth.date()
 
+
     setMonthHeader(momentMonth.format('MMMM YYYY'))
-    
+
     for (let i = startOfMonthDate; i <= endOfMonthDate; i++) {
-      bufferDays.push(i)
+      calDays.push(i)
     }
 
     const prevMonth = endOfMonth.subtract(1, 'month').endOf('month').date()
 
-    for ( let i = 0; i < startOfMonthDay; i++ ) {
-      bufferDays.unshift(prevMonth - i)
+    for (let i = 0; i < startOfMonthDay; i++) {
+      prevCalDays.unshift(prevMonth - i)
     }
 
 
-    setDays(bufferDays)
+    setDays(calDays)
+    setPrevDays(prevCalDays)
 
   }, [month])
 
   return (
-      <div className='CalendarContainer'>
-        <div className='Header'>
-          <h1>{monthHeader}</h1>
-          <button onClick={prevMonth}>PREV</button>
-          <button onClick={nextMonth}>NEXT</button>
+    <div className='CalendarContainer'>
+      <div className='Header'>
+        <h1>{monthHeader}</h1>
+        <button onClick={prevMonth}>PREV</button>
+        <button onClick={nextMonth}>NEXT</button>
+      </div>
+      <div className='Calendar'>
+        <div className='CalendarHeader'>
+          <div>SUN</div>
+          <div>MON</div>
+          <div>TUE</div>
+          <div>WED</div>
+          <div>THU</div>
+          <div>FRI</div>
+          <div>SAT</div>
         </div>
-        <div className='Calendar'>
-          <div className='CalendarHeader'>
-            <div>SUN</div>
-            <div>MON</div>
-            <div>TUE</div>
-            <div>WED</div>
-            <div>THU</div>
-            <div>FRI</div>
-            <div>SAT</div>
-          </div>
-          <div className='CalendarWeek'>
-            {days.map((day, idx) => {
-    
-                return (<CalendarDay key={idx} month={month} day={day}year={monthHeader.split(' ')[1]}/>)
-              })
-              }
-          </div>
+        <div className='CalendarWeek'>
+          {prevDays.map((day, idx) => {
+
+            return (<CalendarDay key={idx} month={month - 1} day={day} year={monthHeader.split(' ')[1]} />)
+          })}
+          {days.map((day, idx) => {
+
+            return (<CalendarDay key={idx} month={month} day={day} year={monthHeader.split(' ')[1]} />)
+          })}
         </div>
       </div>
-    )
+    </div>
+  )
 }
 
 export default Home;
