@@ -21,7 +21,7 @@ const CalendarDay = ({ month, day, year }) => {
             {games.map(game => {
                 console.log(game)
                 return (
-                    <div className='CalendarGame' style={{ 'background-image': `url(${game.game_art})` }}>
+                    <div className='CalendarGame' style={{ backgroundImage: `url(${game.game_art})` }}>
                         <div className='GameTitle'>{game.name}</div>
                     </div>)
             })}
