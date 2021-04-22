@@ -1,5 +1,6 @@
 .Calendar {
   margin: 1rem;
+  height: 90vh;
 }
 
 .CalendarContainer {
@@ -13,6 +14,24 @@
   text-align: center;
 }
 
+.Header {
+  display: flex;
+  /* justify-self: center; */
+  justify-content:space-evenly;
+
+}
+
+.Header > button {
+  outline: none;
+  background-color: transparent;
+  border: none;
+  background: none;
+}
+
+.Header > button > i {
+  font-size: 2rem;
+}
+
 .CalendarHeader, .CalendarWeek {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
@@ -22,18 +41,52 @@
 }
 
 .CalendarWeek {
-  grid-auto-rows: 100px;
+  /* grid-auto-rows: 100px; */
   text-align: right;
+  height: 90vh;
+  margin: 1rem;
 }
 
 .CalendarDay {
-  /* border-right: 1px solid #e1e1e1; */
+  display: grid;
+  border-right: 1px solid #e1e1e1;
   border: 1px solid #e1e1e1;
   border-radius: 3px;
   background-color: darkgray;
-  opacity: 0.7;
+  padding: 0;
+  grid-row-gap: 0.5rem;
+  grid-column-gap: 0.2rem;
 }
 
 .CalendarDay:hover {
   opacity: 0.3;
+}
+
+.CalendarGame {
+  background-color:blue;
+  width: 15rem;
+  background-size: cover;
+}
+
+.CalDate, .CalendarGame {
+  grid-row: 1 /2;
+}
+
+.CalDate {
+  display:flex;
+  background-color: teal;
+  border-radius: 50%;
+  height: 1.5rem;
+  width: 1.5rem;
+  align-self: flex-start;
+  justify-content: space-around;
+}
+
+.GameTitle {
+  font-size: 1rem;
+  font-weight: bold;
+  color: white;
+  margin: 0.5rem;
+  -webkit-text-stroke-width: 0.1px;
+  -webkit-text-stroke-color: black;
 }

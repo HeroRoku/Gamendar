@@ -53,9 +53,13 @@ const Home = () => {
   return (
     <div className='CalendarContainer'>
       <div className='Header'>
+        <button onClick={prevMonth}>
+          <i className="fas fa-arrow-left"></i>
+        </button>
         <h1>{monthHeader}</h1>
-        <button onClick={prevMonth}>PREV</button>
-        <button onClick={nextMonth}>NEXT</button>
+        <button onClick={nextMonth}>
+          <i className="fas fa-arrow-right"></i>
+        </button>
       </div>
       <div className='Calendar'>
         <div className='CalendarHeader'>

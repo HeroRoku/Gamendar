@@ -15,17 +15,17 @@ const CalendarDay = ({ month, day, year }) => {
 
     if (!games) games = null
 
-    // console.log(games)
-
     return (games && (
         <div className='CalendarDay'>
-            {day}
-            <div>GAME DAY
-                <div className='GameTitle'>
-                </div>
-                <div className='GameArt'></div>
-            </div>
-        </div>
+            {/* <div className='CalDate'>{day}</div> */}
+            {games.map(game => {
+                console.log(game)
+                return (
+                    <div className='CalendarGame' style={{ 'background-image': `url(${game.game_art})` }}>
+                        <div className='GameTitle'>{game.name}</div>
+                    </div>)
+            })}
+        </div >
     )) || (
             <div className='CalendarDay'>
                 {day}
