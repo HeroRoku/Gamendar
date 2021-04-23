@@ -18,10 +18,9 @@ const CalendarDay = ({ month, day, year }) => {
     return (games && (
         <div className='CalendarDay'>
             {/* <div className='CalDate'>{day}</div> */}
-            {games.map(game => {
-                console.log(game)
+            {games.map((game, idx) => {
                 return (
-                    <div className='CalendarGame' style={{ backgroundImage: `url(${game.game_art})` }}>
+                    <div key={idx} className='CalendarGame' style={{ backgroundImage: `url(${game.game_art})` }}>
                         <div className='GameTitle'>{game.name}</div>
                     </div>)
             })}

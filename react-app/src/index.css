@@ -2,3 +2,15 @@
 body {
     font-family: 'Electrolize', sans-serif;
 }
+
+nav {
+    margin: 2rem;
+    color: darkgray;
+}
+
+a {
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: rgb(66, 66, 66);
+}

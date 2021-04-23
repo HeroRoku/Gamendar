@@ -54,7 +54,7 @@
   border-radius: 3px;
   background-color: darkgray;
   padding: 0;
-  grid-row-gap: 0.5rem;
+  grid-row-gap: 0.2rem;
   grid-column-gap: 0.2rem;
 }
 
@@ -63,14 +63,18 @@
 }
 
 .CalendarGame {
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
   background-color:blue;
   width: 15rem;
   background-size: cover;
+  
 }
 
-.CalDate, .CalendarGame {
+/* .CalDate, .CalendarGame {
   grid-row: 1 /2;
-}
+} */
 
 .CalDate {
   display:flex;
