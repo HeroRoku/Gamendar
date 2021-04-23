@@ -11,6 +11,7 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
   const onLogin = async (e) => {
     e.preventDefault();
     const user = await login(email, password);
+    console.log(user)
     if (!user.errors) {
       setAuthenticated(true);
     } else {
@@ -22,8 +23,8 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
   //   e.preventDefault()
   //   const email = 'demo@gamendar.com'
   //   const password = 'password'
-  //   console.log(email, password)
   //   const user = await login(email, password);
+  //   console.log(user)
   //   if (!user.errors) {
   //     setAuthenticated(true);
   //   } else {

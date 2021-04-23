@@ -6,6 +6,7 @@
 .CalendarContainer {
   display: grid;
   grid-template-rows: 10% 90%;
+  height: 100%
 }
 
 .CalendarHeader {
@@ -58,9 +59,9 @@
   grid-column-gap: 0.2rem;
 }
 
-.CalendarDay:hover {
+/* .CalendarDay:hover {
   opacity: 0.3;
-}
+} */
 
 .CalendarGame {
   display: flex;
@@ -69,9 +70,11 @@
   background-color:blue;
   width: 15rem;
   background-size: cover;
-  
 }
 
+.CalendarGame:hover {
+  opacity: 0.3;
+}
 /* .CalDate, .CalendarGame {
   grid-row: 1 /2;
 } */
