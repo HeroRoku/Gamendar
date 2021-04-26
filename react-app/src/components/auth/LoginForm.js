@@ -21,8 +21,8 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
 
   // const demoSubmit = async (e) => {
   //   e.preventDefault()
-  //   const email = 'demo@gamendar.com'
-  //   const password = 'password'
+  //   const demoEmail = () => setEmail('demo@gamendar.com')
+  //   const demoPassword = () => setPassword('password')
   //   const user = await login(email, password);
   //   console.log(user)
   //   if (!user.errors) {
