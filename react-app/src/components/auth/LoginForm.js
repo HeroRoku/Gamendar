@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 import { login } from "../../services/auth";
-import './LoginForm.css'
+import "./LoginForm.css";
 
 const LoginForm = ({ authenticated, setAuthenticated }) => {
   const [errors, setErrors] = useState([]);
@@ -11,7 +11,6 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
   const onLogin = async (e) => {
     e.preventDefault();
     const user = await login(email, password);
-    console.log(user)
     if (!user.errors) {
       setAuthenticated(true);
     } else {
@@ -19,18 +18,16 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
     }
   };
 
-  // const demoSubmit = async (e) => {
-  //   e.preventDefault()
-  //   const demoEmail = () => setEmail('demo@gamendar.com')
-  //   const demoPassword = () => setPassword('password')
-  //   const user = await login(email, password);
-  //   console.log(user)
-  //   if (!user.errors) {
-  //     setAuthenticated(true);
-  //   } else {
-  //     setErrors(user.errors)
-  //   }
-  // }
+  const demoSubmit = async (e) => {
+    e.preventDefault();
+    const user = await login("demo@gamendar.com", "password");
+    console.log(user);
+    if (!user.errors) {
+      setAuthenticated(true);
+    } else {
+      setErrors(user.errors);
+    }
+  };
 
   const updateEmail = (e) => {
     setEmail(e.target.value);
@@ -45,10 +42,12 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
   }
 
   return (
-    <div className='loginContainer'>
+    <div className="loginContainer">
       <form onSubmit={onLogin}>
         <ul>
-          {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+          {errors.map((error, idx) => (
+            <li key={idx}>{error}</li>
+          ))}
         </ul>
         {/* <label htmlFor="email">Email</label> */}
         <h1>Login</h1>
@@ -67,17 +66,9 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
           value={password}
           onChange={updatePassword}
         />
-        <input
-          type="submit"
-          value="Login"
-        />
+        <input type="submit" value="Login" />
+        <input onClick={demoSubmit} type="submit" value="Demo Account" />
       </form>
-      {/* <form onSumbit={demoSubmit}>
-        <input
-          type='submit'
-          value='Demo Account'
-        />
-      </form> */}
     </div>
   );
 };
